@@ -1,6 +1,4 @@
 #include <climits>
-#include <iostream>
-#include <utility>
 #include <vector>
 
 using namespace std;
@@ -8,10 +6,6 @@ using namespace std;
 class Solution {
 public:
   int maxProfit(vector<int> &prices) {
-
-    // Input: prices = [10,1,5,6,7,1]
-    //
-    // Output: 6
 
     int l = 0;
     int mx_profit = 0;
