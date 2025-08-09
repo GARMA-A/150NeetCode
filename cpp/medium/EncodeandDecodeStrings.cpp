@@ -34,6 +34,7 @@ public:
         word_size--;
       }
       ans.push_back(current_word);
+      i++;
     }
     return ans;
   }
