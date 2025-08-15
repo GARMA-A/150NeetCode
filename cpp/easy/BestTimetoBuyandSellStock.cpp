@@ -2,7 +2,7 @@
 #include <vector>
 
 using namespace std;
-
+// comment
 class Solution {
 public:
   int maxProfit(vector<int> &prices) {
