@@ -1,0 +1,6 @@
+{
+  "typeCheckingMode": "basic",
+  "reportOptionalMemberAccess": "warning",
+  "reportOptionalSubscript": "warning",
+  "reportOptionalCall": "warning"
+}
