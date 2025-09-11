@@ -32,6 +32,7 @@ class Solution {
 
 const s = new Solution();
 
+
 console.log(s.isAnagram("a", "jam"));
 
 

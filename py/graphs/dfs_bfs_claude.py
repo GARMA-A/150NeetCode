@@ -111,7 +111,6 @@ def bfs_2d_iterative(grid, start_row, start_col):
                 visited.add((new_row, new_col))
                 queue.append((new_row, new_col))
 
-
 def bfs_2d_recursive(grid, start_row, start_col):
     """
     BFS on 2D grid - Recursive version (less common but possible)
