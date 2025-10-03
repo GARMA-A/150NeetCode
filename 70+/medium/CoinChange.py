@@ -3,36 +3,21 @@ from typing import List
 
 class Solution1:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        self.ans = float("inf")
         memo = {}
-        coins.sort(reverse=True)
 
-        def DFS(current_amount: int, size: int):
+        def DFS(current_amount: int):
             if current_amount == 0:
-                self.ans = min(self.ans, size)
-                return
-            if current_amount < 0 or size >= self.ans:
-                return
-            if current_amount in memo and memo[current_amount] <= size:
-                return
-            memo[current_amount] = size
+                return 0
+            if current_amount < 0:
+                return float("inf")
+            if current_amount in memo:
+                return memo[current_amount]
+            min_coins = float("inf")
             for coin in coins:
-                DFS(current_amount - coin, size + 1)
+                res = DFS(current_amount - coin)
+                min_coins = min(min_coins, res + 1)
+            return memo[current_amount]
 
-        DFS(amount, 0)
+        ans = DFS(amount)
 
-        return int(self.ans) if self.ans != float("inf") else -1
-
-
-# insane solution
-
-
-class Solution2:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [amount + 1] * (amount + 1)
-        dp[0] = 0
-        for i in range(1, amount + 1):
-            for c in coins:
-                if (i - c) >= 0:
-                    dp[i] = min(dp[i], 1 + dp[i - c])
-        return dp[amount] if (dp[amount] != amount + 1) else -1
+        return int(ans) if ans != float("inf") else -1
