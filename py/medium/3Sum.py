@@ -1,4 +1,3 @@
-from sys import thread_info
 from typing import List
 
 
