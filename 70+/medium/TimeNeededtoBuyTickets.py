@@ -21,4 +21,7 @@ class Solution:
 
 
         return seconds
-        
+
+
+s = Solution()
+print(s.timeRequiredToBuy([2,2,5,2],2)," sec")
