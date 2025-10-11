@@ -2,7 +2,7 @@ from typing import List
 
 
 def find_max_and_second_max(nums: List[int]):
-    mx, sec_mx = float("-inf"), float("-inf")
+    mx, sec_mx= float("-inf"), float("-inf")
 
     for num in nums:
         old = mx
