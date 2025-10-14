@@ -1,20 +1,33 @@
-#include "./LinkedList/LinkeList.c"
 #include <stdio.h>
+#include <stdlib.h>
+
+char *readString() {
+  char *str = NULL;
+  int size = 0;
+  int capacity = 10;
+  str = (char *)malloc(capacity * sizeof(char));
+  if (str == NULL) {
+    printf("memory allocation failed");
+    exit(1);
+  }
+  char ch;
+  while ((ch = getchar()) != '\n' && ch != EOF) {
+    if (size == capacity - 1) {
+      capacity *= 2;
+      str = (char *)realloc(str, capacity * sizeof(char));
+      if (str == NULL) {
+        printf("memory allocation failed");
+        exit(1);
+      }
+    }
+    str[size++] = ch;
+  }
+  str[size] = '\0';
+  return str;
+}
 
 int main() {
-  struct LinkedListNode *head =
-      (struct LinkedListNode *)malloc(sizeof(struct LinkedListNode));
-  head->data = -1;
-
-  for (int i = 0; i < 5; i++) {
-    append(head, i);
-  }
-  display(head);
-  popleft(&head);
-  display(head);
-  pop(head);
-  display(head);
-  char str[] = "welcome";
-  printf("this is our string %s", str);
-  freeList(head);
+  char *str = readString();
+  printf("this is the str %s", str);
+  free(str);
 }
