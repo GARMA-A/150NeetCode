@@ -1,0 +1,2 @@
+
+char *String(char str[]) {}

@@ -1,4 +1,5 @@
 #include "./LinkedList/LinkeList.c"
+#include <stdio.h>
 
 int main() {
   struct LinkedListNode *head =
@@ -13,4 +14,7 @@ int main() {
   display(head);
   pop(head);
   display(head);
+  char str[] = "welcome";
+  printf("this is our string %s", str);
+  freeList(head);
 }

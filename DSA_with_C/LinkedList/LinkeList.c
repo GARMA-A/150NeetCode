@@ -76,3 +76,14 @@ void popleft(struct LinkedListNode **head) {
   *head = (*head)->next;
   free(temp);
 }
+
+void freeList(struct LinkedListNode *head) {
+  struct LinkedListNode *current = head;
+  struct LinkedListNode *next;
+
+  while (current != NULL) {
+    next = current->next;
+    free(current);
+    current = next;
+  }
+}
