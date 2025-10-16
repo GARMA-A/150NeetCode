@@ -6,7 +6,7 @@ class TreeNode:
          self.val = val
          self.left = left
          self.right = right
-
+# DFS solution
 class Solution2:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         if not nums:
@@ -17,7 +17,7 @@ class Solution2:
         root.right = self.sortedArrayToBST(nums[mid+1:])
         return root
 
-
+# BFS solution
 class Solution: 
     def sortedArrayToBST(self , nums:List[int]) -> Optional[TreeNode]:
         if not nums:
