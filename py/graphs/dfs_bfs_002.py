@@ -1,4 +1,5 @@
 from collections import deque
+from enum import verify
 from typing import List, Mapping
 
 adj_list : Mapping[str , List[str] ]= {}
@@ -20,7 +21,18 @@ def DFS(startNode:str):
             if node not in visited:
                 visited[node] = True
                 stack.append(node)
-# DFS("A")
+
+def rec_DFS(startNode:str , visited = {}):
+    if visited.get(startNode , False):
+        return
+    print(startNode , end=" ")
+    visited[startNode] = True
+    for neighbor in adj_list[startNode]:
+        rec_DFS(neighbor , visited)
+
+DFS("A")
+print()
+rec_DFS("A")
 # print()
 
 def BFS(startNode:str):
@@ -34,7 +46,7 @@ def BFS(startNode:str):
             if node not in visited:
                 visited[node] = True
                 q.append(node)
-BFS("A")
+#BFS("A")
 
 # A B C D E F
 twoDArray =[
@@ -79,7 +91,7 @@ def BFS2(startNode :str):
                 visited.add(ch)
                 q.append(ch)
 
-BFS2("A")
+#BFS2("A")
 
 
 
