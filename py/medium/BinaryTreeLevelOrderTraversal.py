@@ -1,5 +1,5 @@
 import collections
-from typing import Collection, List, Optional
+from typing import  List, Optional
 
 
 class TreeNode:
@@ -11,7 +11,6 @@ class TreeNode:
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-
         queue = collections.deque()
         queue.append(root)
         ans = []
