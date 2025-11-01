@@ -1,31 +1,37 @@
+#include "dyncmicArray.h"
 #include <stdlib.h>
-typedef struct {
-  int *data;
-  int size;
-  int capacity;
-} DynamicArray;
+#include <string.h>
 
 DynamicArray *init(int initialCapacity) {
   DynamicArray *da = (DynamicArray *)malloc(sizeof(DynamicArray));
-  da->data = (int *)malloc(initialCapacity * sizeof(int));
+  da->data = (char **)malloc(initialCapacity * sizeof(char *));
   da->size = 0;
   da->capacity = initialCapacity;
   return da;
 }
 
-void append(int newValue, DynamicArray *da) {
+void deinit(DynamicArray *da) {
+  for (int i = 0; i < da->size; i++) {
+    free(da->data[i]);
+  }
+  free(da->data);
+  free(da);
+}
+
+void append(char *newValue, DynamicArray *da) {
   if (da->capacity == da->size) {
     da->capacity *= 2;
-    da->data = realloc(da->data, sizeof(int) * da->capacity);
+    da->data[da->size] = (char *)malloc(strlen(newValue) + 1);
+    strcpy(da->data[da->size], newValue);
   }
   da->data[da->size++] = newValue;
 }
 
-void pop(DynamicArray *da) { da->data[--da->size] = -1; }
+void pop(DynamicArray *da) { da->data[--da->size] = NULL; }
 
-int top(DynamicArray *da) {
+char *top(DynamicArray *da) {
   if (da->size > 0) {
     return da->data[da->size - 1];
   }
-  return -1; // or some other error value
+  return NULL;
 }
