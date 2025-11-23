@@ -11,6 +11,9 @@ class TreeNode:
 
 class Solution:
     def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        
         queue = collections.deque()
         queue.append(root)
         ans = []
@@ -19,12 +22,12 @@ class Solution:
             level = []
             for _ in range(qlen):
                 top = queue.popleft()
-                if top:
-                    level.append(top.val)
+                level.append(top.val)
+                if top.left:
                     queue.append(top.left)
+                if top.right:
                     queue.append(top.right)
-            if level:
-                ans.append(level)
+            ans.append(level)
 
         # Reverse the result to get bottom-up order
         return ans[::-1]

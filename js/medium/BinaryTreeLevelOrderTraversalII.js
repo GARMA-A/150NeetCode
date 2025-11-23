@@ -18,13 +18,14 @@ var levelOrderBottom = function(root) {
     
     const ans = [];
     const queue = [root];
+    let queueIndex = 0;
     
-    while (queue.length > 0) {
-        const levelSize = queue.length;
+    while (queueIndex < queue.length) {
+        const levelSize = queue.length - queueIndex;
         const level = [];
         
         for (let i = 0; i < levelSize; i++) {
-            const cur = queue.shift();
+            const cur = queue[queueIndex++];
             level.push(cur.val);
             
             if (cur.left) queue.push(cur.left);
