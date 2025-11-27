@@ -1,25 +1,21 @@
-from typing import List
+from typing import List, Set, Tuple
 
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        res :Set[Tuple[int,...]]= set()
         candidates.sort()
-        res = []
-        def backtrack(idx:int , curArr:List[int] , curSum:int ):
+        def back(idx:int ,curSum:int,curArray:List[int]):
             if curSum == target:
-                res.append(curArr)
-                return 
-            for i in range(idx , len(candidates)):
-                if i>idx and candidates[idx] == candidates[i-1]:
-                    continue
-                if curSum + candidates[i] > target:
-                    break
-                curArr.append(candidates[idx])
-                backtrack(idx+1 , curArr , curSum+candidates[idx])
-                curArr.pop()
-
-        backtrack(0 , [] , 0)
-
-        return res
+                res.add(tuple(curArray.copy()))
+                return
+            if curSum > target or idx >= len(candidates):
+                return
+            curArray.append(candidates[idx])
+            back(idx+1 , curSum+candidates[idx] , curArray)
+            curArray.pop()
+            back(idx+1 , curSum , curArray)
+        back(0 , 0 ,[])
+        return [list(num) for num in res]
 
 
 

@@ -1,0 +1,12 @@
+var stdin_buffer: [1024]u8 = undefined;
+    var stdout_buffer: [1024]u8 = undefined;
+
+    var stdin = std.fs.File.stdin().reader(&stdin_buffer);
+    var stdout = std.fs.File.stdout().writer(&stdout_buffer);
+
+    try stdout.interface.writeAll("enter text : ");
+    try stdout.interface.flush();
+
+    const line = try stdin.interface.takeDelimiterExclusive('\n');
+    try stdout.interface.print("you just enter :{s}\n ", .{line});
+    try stdout.interface.flush();
