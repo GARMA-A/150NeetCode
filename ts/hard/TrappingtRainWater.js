@@ -4,6 +4,8 @@ class Solution {
 	 * @return {number}
 	 */
 	trap(height) {
+		// i do not know how but the problem should solved by this equation
+		// water_trapped+=min(leftMaxHeighArray[idx] , rightMaxHeighArray[idx]) - currentHeigh[idx] 
 		let leftMaxHeightArray = new Array(height.length).fill(0);
 		let curMx = 0;
 		for (let idx = 0; idx < height.length; idx++) {
